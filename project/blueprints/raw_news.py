@@ -2,7 +2,7 @@ import feedparser
 import sys
 import os
 from datetime import datetime
-from rss_sources_indian import INDIAN_NEWS_SOURCES
+from blueprints.rss_sources_indian import INDIAN_NEWS_SOURCES
 
 # Allow importing supabase_client from the project root
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))

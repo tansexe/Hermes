@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 import os
 import sys
 sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), "start_pipeline"))
-from raw_news import fetch_and_store_news
+from blueprints.raw_news import fetch_and_store_news
 
 app = Flask(__name__)
 
