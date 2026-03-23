@@ -50,6 +50,36 @@ export const normalizeBiasData = (biasClassification) => {
 };
 
 /**
+ * Generates a short snippet/description from the article URL and source
+ */
+export const generateSnippet = (url, source) => {
+  if (!url) return "Coverage details are being analyzed across multiple media outlets.";
+
+  try {
+    const parts = url.split('/').filter(p => p.length > 0);
+    // Find segments that look like readable content
+    const contentParts = parts
+      .filter(p => !p.includes('http') && !p.includes('www') && !p.match(/^\d+$/) && p.length > 3)
+      .slice(-3)
+      .map(p => {
+        let cleaned = p.split('.')[0]; // remove .html, .ece etc.
+        cleaned = cleaned.replace(/-\d+$/, ''); // remove trailing numbers
+        return cleaned.replace(/-/g, ' ');
+      })
+      .filter(p => p.length > 5);
+
+    if (contentParts.length > 0) {
+      const topic = contentParts[contentParts.length - 1];
+      const capitalized = topic.charAt(0).toUpperCase() + topic.slice(1);
+      return `${capitalized}. This story is being tracked across multiple outlets including ${source || 'various sources'}, revealing divergent framing and editorial perspectives.`;
+    }
+  } catch (e) {
+    // fall through
+  }
+  return `This story is being tracked across multiple media outlets including ${source || 'various sources'}.`;
+};
+
+/**
  * Process raw JSON into a flat array of article objects suitable for components
  */
 export const processRawData = (rawData) => {
@@ -69,6 +99,11 @@ export const processRawData = (rawData) => {
     timeAgo: getRandomTimeAgo(article.news_id),
     sourcesCount: article.bias_classification?.total_references || 1,
     biasScale: normalizeBiasData(article.bias_classification),
-    finalBias: article.bias_classification?.final_bias || 'unknown'
+    finalBias: article.bias_classification?.final_bias || 'unknown',
+    snippet: generateSnippet(article.main_news?.url, article.main_news?.source),
+    references: (article.references || []).map(ref => ({
+      source: ref.source,
+      url: ref.url
+    }))
   }));
 };
