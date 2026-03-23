@@ -61,10 +61,7 @@ const Home = () => {
       
       <main className="main-content container">
         {featuredStory && <FeaturedStory story={featuredStory} />}
-        {trendingStories.length > 0 && <TrendingGrid stories={trendingStories} />}
-        
-        <div className="w-full h-px bg-gray-200 my-12" style={{ backgroundColor: 'var(--border)' }}></div>
-        
+        {trendingStories.length > 0 && <TrendingGrid stories={trendingStories} />}     
         {listStories.length > 0 && <StoryList stories={listStories} />}
       </main>
 
