@@ -20,19 +20,19 @@ const Footer = () => {
             <h4>PLATFORM</h4>
             <div className="footer-links">
               <a href="#">Home</a>
-              <a href="#">Explore</a>
-              <a href="#">Bias Map</a>
-              <a href="#">Methodology</a>
+              <a href="/explore">Explore</a>
+              <a href="/bias">Bias Map</a>
+              <a href="/methodology">Methodology</a>
             </div>
           </div>
 
           <div className="footer-column">
             <h4>COMPANY</h4>
             <div className="footer-links">
-              <a href="#">About</a>
-              <a href="#">Careers</a>
-              <a href="#">Press</a>
-              <a href="#">Contact</a>
+              <a href="/about">About</a>
+              <a href="/careers">Careers</a>
+              <a href="/press">Press</a>
+              <a href="/contact">Contact</a>
             </div>
           </div>
 
