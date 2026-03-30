@@ -6,6 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Article from './pages/Article';
+import BiasMap from './pages/BiasMap';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/article/:id" element={<Article />} />
+        <Route path="/bias" element={<BiasMap />} />
       </Routes>
     </BrowserRouter>
   );
