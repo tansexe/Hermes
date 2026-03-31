@@ -1,4 +1,4 @@
-# Hermes 📰 - AI Powered News Pipeline
+# Hermes🗞️
 
 Hermes is a comprehensive, AI-powered news pipeline and web application that aggregates Indian news from RSS sources, detects similar articles, classifies them by publisher bias, and generates structured output for deep analysis. 
 
